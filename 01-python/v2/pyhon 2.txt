@@ -1,0 +1,94 @@
+1. Orderedict je sortiran, dict nije.
+
+2.Defaultdict ne prima parametre i ima default vrednosti.
+
+3.Namedtyple
+
+4.TODO
+
+5.To je nacin da se opise brzina algoritma * O(n) *
+
+6.Kod liste je dodavanje na kraj O(1), a kod deque i na pocetku i na kraju.
+
+7.Problem je ako jedna pod klasa nasledjuje dve nad klase, ne zna se koji ce ce se atributi
+	koristiti(od koje klase).
+
+8.Resava se tako sto se gleda uvek prva nasledjena klasa
+
+9.TODO
+
+10.Poziv nekih od metoda nad klase
+
+11.Da, preko interfejsa
+
+12.TODO
+
+13.Jesu objekti, klasa je objekat metaklase. 
+
+14.Metaklasa valjda
+
+15.TODO
+
+16.Za type.
+
+17.Fja koja poziva funkciju
+
+18.U preemptive je cpu alociran procesima na odredjeno vreme, a kod non preemptive je alociran
+	dok se ne zavrsi proces
+
+19.Corutine su generalizacija subrutina. Koriste za multitaskovanje kada proces daje kontrolu
+	periodicno ili omogucava da se izvrsava vise aplikacija istovremeno	
+
+20.Event loop pokrece asinhrone taskove i callbackove, izvrsava IO operacije...
+
+21.
+
+22.
+
+23.
+
+24.
+
+25.
+
+26.
+
+27.
+
+28.
+
+29.
+
+30.
+
+31.
+
+32.
+
+33.
+
+34.
+
+35.
+
+36.
+
+37.
+
+38.
+
+39.
+
+40.
+
+41.
+
+42.
+
+43.
+
+44.
+
+45.
+
+46.
