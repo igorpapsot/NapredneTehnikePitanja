@@ -1,0 +1,29 @@
+1. Jezici opste namene mogu da se koriste za razne domene koji nisu specifirani. Primeri: java, python, pharo
+2. Kompajliran se prvo prevodi u binarni a interpretirani se izvrsava bez kompajliranja
+3. Prevodi kod u masinski kod
+4. Backend i frontend i mozda neki srednji deo nisu usaglaseni
+5. Frontend sintaksnu nalizu, leksicku analizu i simanticku analizu, a backend kod generator i optimizacione faze(moze da se doradi)
+6. Leksicka analiza nema rec u rezervisanim reci (primer whileif)
+	Sintaksna analiza kombinacija ralicitih tokena zavisi od redosleda (primer while do)
+	Simanticka analiza “bezbednost tipova?” (primer int broj = 1.0;)
+7. Skeniranje stringa i formiranje elemenata u apstraktnom stablu
+8. Uzlazno i silazno parsiranje. Silazno uzmemo sve kombinacije gramatike koje moze da generise i ulazni string da li moze se parsirati, uzlazno obrnuto da li ulazni string mozemo da redukujemo na neku gramatiku (Treba doraditi razlike)
+9. Meta jezik koji omogucava definisanje gramatike pri cemu…(Treba doraditi koporati sa wiki)
+10. 
+11. Wiki
+12. 
+13. Upadne u beskonacnu rekurziju i on se resava time sto zamenimo to sa leve strane sa nekim drugim terminalnim simbolom (resava se zamenom za desnu rekurziju) Postoji algoritam
+14. 
+15. 
+16. 
+17. Napravljeni za neku odredjenu namenu/domen (sql, jpa, sah)
+18. 
+19. 
+20. Tekstualni i graficki (graficki: sah, uml, tekstualni: sql)
+21. Produktivniji
+22. Ne razume ni Dusan pitanje… Upotrebom parsera???
+23. Saznace pa ce javiti Dusan, misli da su silazni i uzlazni parseri
+24. 
+25.  
+26. (def nece biti na testu) 
+
