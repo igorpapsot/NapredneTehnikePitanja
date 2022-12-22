@@ -1,81 +1,127 @@
+Sta je to script jezik? Navesti nekoliko primera.
 1.Skript jezici su programski jezici koji se ne kompajliraju, nego su interpretirani.
-	Ovi jezici nisu namenjeni da komuniciraju sa drugim jezicima. Neki od njih su
+	Skriptni jezici su postali popularni i u veb programiranju zbog svoje prenosivosti i jednostavnosti u pisanju.
+	Neki od njih su:
 	node js, bash i python.
 
+Kada je nastao Python programski jezik? Ko je njegov tvorac?
 2.Python je nastao 1991, njegov tvorac je Guido van Rossum.
 
+Da li je Python statički ili dinamicki tipiziran programski jezik?
 3.Python je dinamicki tipiziran jezik, sto znaci da nije neophodno deklarisanje tipa 
 	varijable, kad joj zadajemo vrednost.
 
+Da li Python ima tipove podataka?
 4.Python ima tipove podataka.
 
+Navesti nekoliko najznačajnijih Python “implementacija”.
 5.CPython, PyPy, JPython, IronPython
 
+Ukratko objasniti pojam Just-In-Time kompajliranja?
 6.JIT kompilacija je metod za poboljasnje performansi interpretiranih jezika. Tokom izvrsavanja
-	programa, kod se kompajlira, kako bi se poboljsale performanse.
+	programa, kod se kompajlira u masinski kod, kako bi se poboljsale performanse.
 
-7.CPython
+Koja je referentna implementacija Python programskog jezik?
+7.CPython je referentna podrazumevana implementacija napisana u programskom jeziku C.
 
+Da li je Python (CPython) interpretiran ili kompajliran programski jezik? Objasniti.
 8.Python je interpretirani jezik
 
-9.Programska paradigma je nacin da se resi problem, koristeci programski jezik.
+Sta je programska paradigma?
+9.Programska paradigma odredjuje pogled koji programer ima nad programom i njegovim izvrsavanjem.
+	Tj. to je nacin da se resi problem, koristeci programski jezik.
 
-10.Object Oriented programming paradigms
+Sta znaci da je Python multi-paradigmatski programski jezik?
+10.To znaci da podrzava vise paradigmi
+
+Koje sve paradigme Python podrzava?
+11. Podrzava vise programskih paradigmi poput imperativnog, funkcionalnog,
+	proceduralnog i objektno orijentisanog programiranja.
+
+	Object Oriented programming paradigms
 	Procedure Oriented programming paradigms
 	Functional programming paradigms
 
-11.To znaci da podrzava vise paradigmi
 
-12.Magicne metode su set metoda koje se mogu koristiti da se obogate klase.
+Sta su i cemu sluze magicne metode? Navesti nekoliko primera.
+12.Magicne metode su set metoda koje se mogu koristiti da se obogate klase,
+	Mogu se koristiti da se overloaduje ponasanje predefinisanih operanada.
 	primeri: __add__, __init_, __sub__
 
-13.Iterator protokol je klasa koja ima __next()__ metodu. Cuva stanje iterable na
-	kojoj radi.
+Sta je iterator protokol (u kontekstu programskog jezika Python)? Navesti primer.
+13.Iterator je objekat koji sadrzi prebrojiv broj vrednosti.
+	Iterator protokol je klasa koja implementira iterator protokol koji sadrzi
+	 __next()__ i __iter()__metodu. Cuva stanje iterable na kojoj radi.
 
+Koja je razlika izmedju generatora i iteratora? Kada se koristi jedan, a kada drugi?
 14.Iterator vraca vrednosti sa next(), a generator vraca iterator pomocu kog se prolazi
 	kroz vrednosti. Koriste se kada prolazimo kroz kolekcije.
 
+Koja je razlika izmedju __getattribute__ i __getattr__?
 15. __getattr__ se poziva kad se standardnim mehanizmima ne nadje atribut. __getattribute__
-	je nizeg nivoa, prvo se poziva recnik instance, a zatim __getattr__
+	je nizeg nivoa, prvo se poziva recnik instance, a zatim __getattr__ .
 
 16. TODO
 
-17.Svaki objekat ima __dict__ koji sadrzi njegove sve atribute
+Sta predstavlja __dict__?
+17.Svaki objekat ima __dict__ , koji predstavlja recnik svih njegovih atributa.
 
-18.Da. public, protected i private (mozda i ne?)
+Da li u programskom jeziku Python postoje modifikatori pristupa?
+18.Da. public(default), protected (atribut se obelezava sa _ pre naziva atributa) 
+	i private (atribut se obelezava sa __ pre naziva atributa).
 
-19.TODO
+Koje su dve prednosti deskriptora u odnosu na properties? Navesti primer.
+19.Deskriptor sklanja visak iz trenutne klase i sklanja u neku drugu
+	i omogucava da ponasanje atributa vezemo za sam atribut.
 
-20.Da, sve f-je su objekti u pythonu
+Da li su funkcije objekti u programskom jeziku Python?
+20.Da, sve f-je su objekti u pythonu.
 
+Da li su funkcije first-class objekti u programskom jeziku Python? Objasniti.
 21.Da, to znaci da se funkcije tretiraju kao vrednosti, mogu da se dodele promenjivama.
 	Mogu se raditi iste stvari kao i sa ostalim objektima.
 
+Sta su to unutrasnje (ugnjezdene) funkcije?
 22.To su f-je koje su definisane unutar druge f-je. Mogu da koriste varijable iz 
-	spoljasnje f-je
+	spoljasnje f-je.
 
+Sta je leksicko zatvorenje?
 23.F-ja pamti vrednosti u spoljasnjem opsegu, cak i ako nisu prisutne u memoriji
 
+Sta su dekoratori? Navesti nekoliko primera.
 24.Dekoratori nam omogucavaju da wrapujemo f-ju i da joj modifikujemo ponasanje,
 	bez da je trajno menjamo.
-	TODO primeri
+	Moze se koristiti npr. kad zelimo da dodamo logovanje, test performance itd.
 
+Da li dekoratori mogu da imaju parametre? Ukoliko mogu, navesti primer.
 25.Dekoratori mogu primati parametre
 	@decorator(params)
 	def func_name():
     		''' Function implementation'''
-	TODO primeri
+	Primer: @time(start=5)
 
+Sta su to lamda funkcije, a sta predikatske funkcije?
 26.Lambda f-je su anonimne funkcije koje se mogu koristiti za pisanje konciznog koda.
 	Predikatske f-je su funkcije sa jednim parametrom, koje vracaju boolean vrednost.
 
-27.
+Koja dva modula u Python programskom jeziku omogucavaju paradigmu funkcionalnog programiranja?
+27.functools i itertools. 
 
-28.
+Sta je to lamda calculus? Ko je njegov tvorac?
+28.Tvorac je matematicar Alonzo Church. Lambda Calculus je matematicka igra gde
+	implementiras programski jezik koristeci samo funkcije koje primaju tacno
+	jedan argument i vracaju tacno jednu vrednost. 
 
-29.
+29. Koji je zadatak @total_ordering dekoratora? Navesti primer.
+	Zadatak je da se smanji redudantnost koda time sto ce klase koje sadrze dekorator
+	@total_ordering da imaju implementirane metode za poredjenje bez da se eksplicitno
+	definisu funkcije za to. Na primer klasa Number ima implementirane metode __lt__ (less than)
+	i __eq__ (equal). Zatim kreiramo dva objekta klase Number sa vrednostima 2 i 5. 
+	Prilikom poredjenja da li je 2 > 5 dobijamo rezultat False iako nemamo implementiranu funkciju
+	__gt__ (greater than) jer nam to omogucava @total_ordering dekorator.
 
-30.
+30. Cemu sluzi @wraps dekorator? Navesti primer.
+	Prikaz dokumentacije neke funkcije koja je dekorisana. 
 
 31.
 

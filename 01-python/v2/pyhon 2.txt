@@ -1,94 +1,255 @@
+U cemu je razlika izmedju kolekcije OrderDict i dict?
 1. Orderedict je sortiran, dict nije.
 
-2.Defaultdict ne prima parametre i ima default vrednosti.
+Sta defaultdict prima kao parametar prilikom instanciranja?
+2.Defaultdict ne prima parametre i ima default vrednosti. Inicijalizuje se sa defaultfactory.
 
+Koja kolekcija dosta podseca na C-ovsku strukturu? Navesti primer njene upotrebe.
 3.Namedtyple
 
-4.TODO
+4.Zadatak
 
+Sta je Big O notacija?
 5.To je nacin da se opise brzina algoritma * O(n) *
 
-6.Kod liste je dodavanje na kraj O(1), a kod deque i na pocetku i na kraju.
+Koja je vremenska kompleksnost dodavanja elementa na pocetak liste, a kolika na pocetak kolekcije deque?
+6.Kod liste je dodavanje na kraj O(1), a kod deque i na pocetku i na kraju O(1).
 
+Sta je Diamond problem u kontekstu visestrukog nasledjivanja?
 7.Problem je ako jedna pod klasa nasledjuje dve nad klase, ne zna se koji ce ce se atributi
 	koristiti(od koje klase).
 
+Kako se resava Diamond problem u Python programskom jeziku?
 8.Resava se tako sto se gleda uvek prva nasledjena klasa
+	Resava se uz pomoc MRO(method resolution order). 
+	Postoje dva pravila:
+	podklase se pretrazuju pre nadklasa i pretrazuju se u redosledu navodjenja
 
-9.TODO
+Navesti dva pravila MRO-a?
+9.Podklase se pretrazuju pre nadklasa i pretrazuju se u redosledu navodjenja
 
-10.Poziv nekih od metoda nad klase
+Sta predstavlja super u programskom jeziku Python?
+10.Poziv nekih od metoda i propertija nad klase
 
+Da li programski jezik Java nativno podrzava visestruku nasledjivanje? Kako se ono realizuje?
 11.Da, preko interfejsa
 
-12.TODO
+12.Zadatak
 
+Da li su klase objekti u programskom jeziku Python?
 13.Jesu objekti, klasa je objekat metaklase. 
 
-14.Metaklasa valjda
+Ko je zaduzen za kreiranje klasa?
+14.Meta klase
 
-15.TODO
+Za sta se sve koristi type u Python programskom jeziku? Navesti primere.
+15.Odredjivanje kojoj klasi pripada objekat. 
 
+Za sta je class lepsa sintaksa? Navesti primer.
 16.Za type.
 
-17.Fja koja poziva funkciju
+Sta su callback funkcije?
+17.To su funkcije koje se prosledjuju kao argument drugoj funkciji.
 
+Koja je razlika izmedju preemptive i non-preemtive multitasking-a?
 18.U preemptive je cpu alociran procesima na odredjeno vreme, a kod non preemptive je alociran
 	dok se ne zavrsi proces
 
+Sta su korutine (u programskom jeziku Python)?
 19.Corutine su generalizacija subrutina. Koriste za multitaskovanje kada proces daje kontrolu
 	periodicno ili omogucava da se izvrsava vise aplikacija istovremeno	
 
+Sta je "pumpa dogadjaja" (event loop)?
 20.Event loop pokrece asinhrone taskove i callbackove, izvrsava IO operacije...
 
-21.
+21. Sta je asinhrono programiranje?
+	To je tehnika koja omogucava programu da potencijalno dugacak zadatak radi u 
+	pozadini umesto da moramo da cekamo da se taj zadatak zavrsi. Kada se taj 
+	zadatak zavrsi, rezultat ce biti prezentovan nasem programu. 
 
-22.
+22. Sta je konkurentno programiranje?
+23. Sta je paralelno programiranje?
+24. Koja je razlika izmedju konkurentnog i paralelnog programiranja?
+	Konkurentno programiranje je kada vise zadataka pocinju, pokrecu se i izvrsavaju
+	u vremenskim periodima koji se preklapaju bez odredjenog redosleda. Dok je 
+	paralelno programiranje je kada se vise zadataka izvrsava u isto vreme. 
+	Npr. kuvar pokusava sam da isece salatu i da mesa supu na sporetu. On ce morati da
+	prestane da sece salatu da bi promesao supu te kad promesa supu onda
+	ce da nastavi da sece salatu i tako ce da ponavlja taj proces dok sve nije
+	zavrseno i to je konkurentan pristup. Dok u paralelnom programiranju cemo imati 2
+	kuvara jedan koji mesa supu drugi koji sece salatu i time smo podelili posao i dali
+	procesorski resurs kako bi omogucili paralelno izvrsavanje. (Nadam se da ima smisla)
 
-23.
+25. Sta je proces?
+26. Sta je nit?
+27. Koja je razlika izmedju procesa i niti?
+	Procesi i niti su nezavisne sekvence izvrsenja. Glavna razlika je da niti koriste
+	deljeni memoriski prostor unutar jednog procesa, dok se procesi odvijaju u 
+	odvojenom memorijskom prostoru.
 
-24.
+28. Kako komuniciraju niti, a kako procesi?
+	Niti komuniciraju deljenom memorijom u istom adresnom prostoru u istom procesu.
+	Dok procesi uzimaju pazljivo odabranu deljenu memoriju preko koje ce da komuniciraju
+	i preko poruka.
 
-25.
+Koja je razlika između generatora i korutine?
+29.Razlika je da corutine mogu da prihvate argumente nakon sto su inicijalno pozvane, a
+	generatori ne mogu.
 
-26.
+Da li se generatori u programskom jeziku Python mogu ulančavati? Ukoliko mogu, navesti
+primer, u suprotnom navesti razlog zašto ne.
+30.Mogu se ulancavati pomocu itertools.chain(). Primer:
+	def chain(*iterables):
+    	for it in iterables:
+        	for element in it:
+            	yield element
 
-27.
+Šta je profajler (engl. profiler)?
+31. Profajler omogucuje deterministicko profilisanje programa. Profil je skup statistika
+	koje opisuju koliko cesto i koliko dugu su deleovi programa pokrenuti.
 
-28.
+Šta je GIL u programskom jeziku Python?
+32.Gil(Global interpreter lock) je mehanizam koji se koristi da se sihronizuje izvrsavanje niti, tako da se izvrsava
+	samo jedna nit po procesu.
 
-29.
+Koliko niti može istovremeno da izvršava kod u jednom Python procesu? Zašto?
+33.U jednom procesu se moze izvrsavati samo jedna nit istovremeno, zato sto
+	python koristi GIL(Global interpreter lock) koji zabranjuje izvrsavanje vise
+	niti u procesu istovremeno.
 
-30.
+Šta je race condition? Navesti primer.
+34.Race condition je bug u konkurentnom programiranju. To je neuspesan slucaj u kom ponasanje programa zavisi
+	od izvrsavanja 2 ili vise niti. 
+	Primer:
+	
+	if (x == 5) // The "Check"
+	{
+	y = x * 2; // The "Act"
 
-31.
+	// Ako je druga nit promenila x izmedju "if (x == 5)" i "y = x * 2",
+	// y nece biti jednako 10.
+	}
+	Primer u pythonu:
 
-32.
+	counter = 0
 
-33.
+	def increment_counter():
+		global counter
+		for i in range(10000):
+			counter += 1
 
-34.
+	t1 = threading.Thread(target=increment_counter)
+	t2 = threading.Thread(target=increment_counter)
 
-35.
+	t1.start()
+	t2.start()
 
-36.
+	t1.join()
+	t2.join()
 
-37.
+	print(counter)
 
-38.
+Šta je trka do podataka (engl. data race)? Navesti primer
+35.Data race je cest problem u konkurentnom programiranju. Desava se kada vise niti koriste deljeni resurs
+	bez odgovarajuce zastite, sto dovodi do neocekivanog ponasanja.
+	Primer:
+	func race() {
+		wait := make(chan struct{})
+		n := 0
+		go func() {
+			n++ // read, increment, write
+			close(wait)
+		}()
+		n++ // conflicting access
+		<-wait
+		fmt.Println(n) // Output: <unspecified>
+	}
+	
+	Primer u pythonu:
+	
+	counter = 0
 
-39.
+	def increment_counter():
+		global counter
+		for i in range(10000):
+			counter += 1
 
-40.
+	def decrement_counter():
+		global counter
+		for i in range(10000):
+			counter -= 1
 
-41.
+	t1 = threading.Thread(target=increment_counter)
+	t2 = threading.Thread(target=decrement_counter)
 
-42.
+	t1.start()
+	t2.start()
 
-43.
+	t1.join()
+	t2.join()
 
-44.
+	print(counter)
 
-45.
+Šta je štetno preplitanje? Navesti primer
+36.TODO
 
-46.
+ Šta je deadlock? Navesti primer.
+37.Deadlock je problem u konkurentnosti, desava se kada nit mora da ceka uslov koji se nikad
+	ne dogodi. Primer:
+	
+	x_lock = threading.Lock()
+	y_lock = threading.Lock()
+
+	def thread_1():
+		with x_lock:
+			print("Thread 1: Acquired lock x")
+			with y_lock:
+				print("Thread 1: Acquired lock y")
+
+	def thread_2():
+		with y_lock:
+			print("Thread 2: Acquired lock y")
+			with x_lock:
+				print("Thread 2: Acquired lock x")
+
+	t1 = threading.Thread(target=thread_1)
+	t2 = threading.Thread(target=thread_2)
+
+	t1.start()
+	t2.start()
+
+Da li se kod asinhronog programiranja javlja problem štetnog preplitanja? Zašto?
+38.TODO
+
+U čemu je razlika između I/O Bound i CPU Bound programa
+39.CPU bound programi vecinski izvrsavaju proracune koristeci CPU, bili bi brzi da je CPU brzi,
+	a izvrsavanje i/o bound programa zavisi od input/output operacija.
+
+Na koje je sve načine moguće optimizovati I/O Bound programe u programskom jeziku
+Python? Koji je od njih najbolji i zašto?
+40.Koriscenje asinhronog i/o, koriscenje brzeg uredjaja za skadistenje, koriscenje cache-a,
+	Koriscenje vise niti, koriscenje brze internet konekcije. Najbolji nacin je koriscenje
+	asihronog i/o, zato sto nam omogucava da radimo druge zadatke dok se izvrsava i/o.
+
+Na koje sve načine je moguće optimizovati CPU Bound programe u programskom jeziku
+Python? Koji je od njih najbolji i zašto?
+41.Koriscenje vise jezgara, koriscenje brzeg cpu, koriscenje brze memorije, koriscenje brzeg kompajlera,
+	koriscenje optimizovanih biblioteka, koriscenje jezika niskog nivoa. Koji je nacin najbolji zavisi od
+	samog programa koji optimizujemo(kntm najbolji je koriscenje jezika niskog nivoa)
+
+Šta će se desiti ukoliko se prilikom asinhronog programiranja koriste zadaci koji nisu
+kooperativni (ne komuniciraju sa event loop-om)?
+42.TODO
+
+Šta je jako, a šta slabo skaliranje?
+43.Sa slabim skaliranjem program bi trebao da uradi vecu kolicnu posla, a sa jakim skaliranem bi trebao da 
+	uradi posao brze.
+
+Prilikom paralelizacije CPU Bound programa multiprocessing bibliotekom, na koji način se bira
+broj procesa? Šta sve treba uzeti u obzir prilikom razmatranja?
+44.Treba da saznamo koliko je procesa cpu bound i koliko cpu-a  i jezgara ima.Na primer, ako je pola procesa cpu
+	bound i radimo 2x hyperthreading:  0.5 * brCPU-a * brJezgara * 2 
+
+45. Zadatak
+
+46. Zadatak
