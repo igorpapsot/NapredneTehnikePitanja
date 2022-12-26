@@ -61,7 +61,7 @@ Koja je razlika izmedju __getattribute__ i __getattr__?
 15. __getattr__ se poziva kad se standardnim mehanizmima ne nadje atribut. __getattribute__
 	je nizeg nivoa, prvo se poziva recnik instance, a zatim __getattr__ .
 
-16. TODO
+16. Zadatak
 
 Sta predstavlja __dict__?
 17.Svaki objekat ima __dict__ , koji predstavlja recnik svih njegovih atributa.
@@ -123,10 +123,10 @@ Sta je to lamda calculus? Ko je njegov tvorac?
 30. Cemu sluzi @wraps dekorator? Navesti primer.
 	Prikaz dokumentacije neke funkcije koja je dekorisana. 
 
-31.
+31.Zadatak
 
-32.
+32.Zadatak
 
-33.
+33.Zadatak
 
-34.
+34.Zadatak

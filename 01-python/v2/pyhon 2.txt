@@ -43,10 +43,10 @@ Ko je zaduzen za kreiranje klasa?
 14.Meta klase
 
 Za sta se sve koristi type u Python programskom jeziku? Navesti primere.
-15.Odredjivanje kojoj klasi pripada objekat. 
+15.Odredjivanje kojoj klasi pripada objekat. Nzm primer
 
 Za sta je class lepsa sintaksa? Navesti primer.
-16.Za type.
+16.Za type. Nzm primer
 
 Sta su callback funkcije?
 17.To su funkcije koje se prosledjuju kao argument drugoj funkciji.

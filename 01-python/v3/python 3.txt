@@ -1,29 +1,94 @@
-1. Jezici opste namene mogu da se koriste za razne domene koji nisu specifirani. Primeri: java, python, pharo
-2. Kompajliran se prvo prevodi u binarni a interpretirani se izvrsava bez kompajliranja
-3. Prevodi kod u masinski kod
-4. Backend i frontend i mozda neki srednji deo nisu usaglaseni
-5. Frontend sintaksnu nalizu, leksicku analizu i simanticku analizu, a backend kod generator i optimizacione faze(moze da se doradi)
-6. Leksicka analiza nema rec u rezervisanim reci (primer whileif)
-	Sintaksna analiza kombinacija ralicitih tokena zavisi od redosleda (primer while do)
-	Simanticka analiza “bezbednost tipova?” (primer int broj = 1.0;)
-7. Skeniranje stringa i formiranje elemenata u apstraktnom stablu
-8. Uzlazno i silazno parsiranje. Silazno uzmemo sve kombinacije gramatike koje moze da generise i ulazni string da li moze se parsirati, uzlazno obrnuto da li ulazni string mozemo da redukujemo na neku gramatiku (Treba doraditi razlike)
-9. Meta jezik koji omogucava definisanje gramatike pri cemu…(Treba doraditi koporati sa wiki)
-10. 
-11. Wiki
-12. 
-13. Upadne u beskonacnu rekurziju i on se resava time sto zamenimo to sa leve strane sa nekim drugim terminalnim simbolom (resava se zamenom za desnu rekurziju) Postoji algoritam
-14. 
-15. 
-16. 
+Šta su to jezici opšte namene1 (engl. General Purpose Languages)? Navesti nekoliko primera.
+1. Jezici opste namene mogu da se koriste za razne domene koji nisu specifirani, nemaju svojstva za 
+	specificne domene. Primeri: java, python, pharo
+
+Koja je razlika između kompajliranog i interpretiranog programskog jezika?
+2. Kompajliran se prvo prevodi u masinski kod,a zatim se izvrsava .Interpretirani se izvrsava bez kompajliranja.
+
+Šta je programski prevodilac (engl. compiler)?
+3. Compiler je program koji prevodi dati kod u masinski kod ili u drugi programski jezik.
+
+Od koliko delova se najčešće sastoje programski prevodici? Koji su to delovi?
+4. Compiler se najčešće zastoji 3 dela. Backend, frontend i middle-end. 
+
+Koji su najčešće delovi prednjeg, a koji zadnjeg dela programskog prevodioca?
+5. Frontend vrsi sintaksnu analizu, leksicku analizu i simanticku analizu. Middle end je deo za optimizaciju.
+	Backend prevodi kod u masinski.
+
+Objasniti pojmove leksičke, sintaksne i semantičke analize.
+6. Leksicka analiza je deljenje koda na manje delove(tokene) i proveravanje da li postoje kljucne reci poput
+	dobijenih tokena. Tokeni su atomicni delovi koda(kljucne reci, simboli...)
+	Sintaksna analiza je proveravanja redosleda tokena
+	Semanticka analiza dodaje semanticke informacije. type checking, object binding...
+	
+Šta predstavlja pojam parsiranja u kontekstu programskih prevodilaca?	
+7. Skeniranje token stringa i formiranje elemenata u apstraktnom stablu
+
+Kakvo parsiranje može biti? U čemu je razlika?
+8. Top-down i Bottom-up parsiranje. 
+	Top-down koristi gramatiku da bi parsirao ulazni string.
+	Bottom-up koristi gramatiku da mi formirao "parse tree" od ulaznog stringa(redukuje ulazni string).
+	
+Šta je Bakus-Naurova forma?	
+9. Context free gramatika koja se koristi da bi se definisala sintaksna pravila jezika.
+
+Šta je stablo parsiranja?
+10. Hijerarhiska struktura koja predstavlja izvodjenje gramatike da bi se dobili ulazni stringovi(nisam bas razumeo ovo,
+	pogledaj na netu bolje)
+
+Šta je apstraktno stablo sintakse?
+11. To je stablo koje je reprezentacija apstraktne sintaksne strukture izvornog koda.
+
+Po kom principu rade silazni, a po kom uzlazni parseri?
+12.Top-down koristi gramatiku da bi parsirao ulazni string.
+	Bottom-up koristi gramatiku da mi formirao "parse tree" od ulaznog stringa(redukuje ulazni string).
+ 
+Kako silazni parseri rešavaju problem leve rekurzije?
+13. Upadne u beskonacnu rekurziju i on se resava time sto zamenimo to sa leve strane sa nekim drugim terminalnim simbolom
+	(resava se zamenom za desnu rekurziju) Postoji algoritam
+
+Šta su to LR parseri?
+14. To je tip bottom-up parsera koji analiziraju deterministicke context-free jezike u linearnom vremenu.
+	Citaju sa leva na desno, proizvode jedan tacan "parse" bez ponovne provere.
+
+Šta je PEG gramatika, a šta PEG parser?
+15. PEG gramatika je vrsta analiticke formalne gramatike. Opisuje formalni jezik pomocu pravila za prepoznavanje stringova
+	u jeziku. PEG parser je posebna vrsta silaznog parsera(nisam nasao nista vise).
+
+Da li PEG gramatike karakteriše deklarativna priroda? Objasniti. 
+16. Nisu, jer nije dovoljno uraditi samo sta parser treba da uradi nego i kako.
+
+Šta su to jezici specifični za domen2 (engl. Domain Specific Languages)? Navesti nekoliko
+primera.
 17. Napravljeni za neku odredjenu namenu/domen (sql, jpa, sah)
-18. 
-19. 
+
+Koja je razlika između JON-a i JSD-a?
+18. JSD se prave tako da bi bili korisceni za konkretan domen i obicno se prevode u neki JON. A JON je napravljen i
+	koristi se za opstu upotrebu.
+
+Koje kriterijume treba da zadovolji dobar JSD?
+19. Jednostavnost, komfornost koriscenja, dobra podrska, dugotrajnost, kvalitet
+
+Kakvi sve tehnički JSD-ovi postoji? Navesti nekoliko primera za svaku kategoriju.
 20. Tekstualni i graficki (graficki: sah, uml, tekstualni: sql)
-21. Produktivniji
-22. Ne razume ni Dusan pitanje… Upotrebom parsera???
-23. Saznace pa ce javiti Dusan, misli da su silazni i uzlazni parseri
-24. 
-25.  
-26. (def nece biti na testu) 
+
+Koje su prednosti upotrebe JSD-ova?
+21. Produktivniji, za strucnjake su jednostavniji za koriscenje.
+
+Kako se upotrebom JSD-a obavlja mapiranje konceptualnog rešenja nekog domenskog
+problema (zadatka) na rešenje iskazano jezikom ciljne platforme?
+22. Ne razume ni Dusan pitanje… Upotrebom parsera??? TODO
+
+Koje se arhitekture mogu koristiti prilikom implementacije JSD-a? Objasniti svaku od njih.
+23. Saznace pa ce javiti Dusan, misli da su silazni i uzlazni parseri TODO
+
+Šta je model, a šta meta-model?
+24. Model je apstrakcija pojave u realnom sistemu, a metea model je apstrakcija modela koja
+	opisuje svojstva modela. Meta model definise konstrukte jezika za modelovanje i njihove
+	odnose, kao i ogranicenje i pravila modelovanja.
+
+25. Zadatak
+
+26. Zadatak
+
 
