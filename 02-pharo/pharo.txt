@@ -1,0 +1,115 @@
+1. Šta je objektno orijentisano programiranje (skr. OOP)?
+	To je programska paradigma koja je zasnovana konceptu objekata, koji sadrze metode i atribute.
+	Ova paradigma je vrlo slicna ljuskom nacinu razmisljanja i resavanju problema jer svaki entitet
+	opisujemo kao objekat. 
+
+2. Šta je klasa?
+	Klasa je kalup(blueprint) za kreiranje objekata.
+
+3. Šta je objekat?
+	Objekat je instanca klase, tj. konkretna implementacija klase
+
+4. Da li je postajanje objekata uslovljeno postojanjem klasa? Objasniti.
+	Uglavnom jeste ali ima izuzetaka. Npr. u JavaScript-u mozemo da kreiramo objekat koristeci funkcije.
+
+5. Šta je enkapsulacija?
+	Mehanizam zastite podataka iz objekta, ogranicava se mogucnost direktnog pristupa.
+
+6. Šta je polimorfizam?
+	Polimorfizam je koncept u OOP koji dozvoljava da se odredjena funkcionalnost ponasa drugacije na
+	osnovu tipa objekta.
+
+7. Šta je interfejs (engl. interface)?
+	Interfejs je spisak metoda i "ugovor" koji klasa moze da implementira, on tu klasu obavezuje
+	da mora implementirati sve metode koje su navedene u interfejsu.
+
+8. Šta je apstraktna klasa?
+	Apstraktna klasa je klasa koja ne moze biti instancirana, koristi se kako bi je druge klase
+	nasledile. Ona nam omogucava da smanjimo ponavljanje koda, tako sto u njoj navedemo zajednicka
+	svojstva nekih klasa.
+
+9. Koja je razlika između interfejsa i apstraktne klase?
+	Interfejs je samo spisak metoda, a apstraktna klasa moze imati i atribute.
+
+10. Objasniti pojam nasleđivanja. Kakvo sve nasleđivanje može biti?
+	To je mehanizam koji nam omogucava da izvedemo klasu iz neke druge klase i da delimo atribute
+	i metode. Moze biti jednostruko nasledjivanje i visestruku nasledjivanje.
+
+11. Kako se definiše stanje, a kako ponašanje objekata?
+	Stanje se definise atributima, a ponasanje metodama.
+
+12. Kako se u kontekstu OOP-a iskazuje izbor?
+	Na osnovu stanja.
+
+Pitanja koja se odnose na Pharo okruženje:
+
+13. Da li je Pharo statički ili dinamički tipiziran programski jezik? Objasniti.
+14. Da li u programskom jeziku Pharo postoje tipovi?
+15. Da li su klase objekti?
+16. Da li su poruke objekti?
+17. U čemu je razlika između poruke i metode? Šta se iskazuje porukom, a šta metodom?
+18. Kako su modifikatori pristupa realizovani u programskom jeziku Pharo?
+19. Kako se u programskom jeziku Pharo definiše statička metoda?
+20. Kako se u programskom jeziku Pharo definiše interfejs?
+21. Kako se u programskom jeziku Pharo definišu parametrizovani tipovi, odnosno generici (engl.
+generics)?
+22. Kojoj klasi pripada nil u programskom jeziku Pharo? Koliko instanci ovog objekta postoji?
+23. Kakve sve poruke mogu biti? Navesti primere za svaku kategoriju poruka.
+24. Kako su u programskom jeziku Pharo definisani prioriteti poruka?
+25. Kako su u programskom jeziku Pharo definisani prioriteti matematičkih operatora?
+26. Šta je objekat prijemnik (engl. receiver), a šta selektor poruke (engl. selector)?
+27. Koje tri komponente može da sadrži poruka?
+28. Šta predstavlja znak ; u programskom jeziku Pharo ?
+29. Šta predstavlja znak . u programskom jeziku Pharo?
+30. Koja je razlika između ; i . u programskom jeziku Pharo?
+31. Šta je kaskada? Šta je rezultat kaskade? Šta je rezultat višestruke upotrebe ; ?
+32. Da li je izraz 1 * 2; + 100; * 123. sintaksno validan? Ukoliko jeste, odrediti njegov
+rezultat, u suprotnom objasniti grešku koja se javlja prilikom parsiranja.
+33. Šta su simboli u programskom jeziku Pharo? Navesti nekoliko primera.
+34. Koji sve literali postoje u programskom jeziku Pharo? Navesti primere.
+35. Šta su blokovi? Da li su blokovi objekti?
+36. Šta je vrednost definicije, a šta evaluacije bloka?
+37. Da li blokovi mogu da primaju argumente? Ukoliko mogu, kako im se argumenti prosleđuju?
+Navesti primere.
+38. Da li se blok može smestiti u privremenu promenljivu? Da li se blok može proslediti kao
+argument poruke? Da li blok može biti povratna vrednost metode?
+39. Koliko puta se jedan blok može evaluirati?
+40. Šta će se desiti ukoliko se prilikom evaluacije bloka naiđe na znak ^ ?
+41. Šta je yourself? Kada se yourself najčešće upotrebljava? Navesti primer.
+42. Kakve sve promenljive mogu biti u programskom jeziku Pharo? Navesti primere.
+43. Šta su globalne, a šta lokalne promenljive u programskom jeziku Pharo? Navesti primere.
+44. Kako su petlje implementirane u programskom jeziku Pharo?
+45. Šta su kolekcije u programskom jeziku Pharo? Navesti nekoliko primera najčešće korišćenih
+kolekcija.
+46. Koja je razlika između niza (Array) i uređene kolekcije (OrderedCollection)?
+47. Šta su literalni nizovi? Koje sve elemente mogu da sadrže?
+48. Kada se kreiraju literalni nizovi?
+49. Šta su iteratori? Kako su implementirani u programskom jeziku Pharo?
+50. Na koji način iteratori doprinose enkapsulaciji kolekcije?
+51. Objasniti šta znači da se iteratori ponašaju polimorfno u programskom jeziku Pharo?
+52. Koje su Pharo poruke ekvivalenti funkcijama map, filter i reduce programskog jezika
+Python?
+53. Šta je true, a šta false u programskom jeziku Pharo? Kojim klasama pripadaju? Koliko
+instanci ovih objekata postoji?
+54. U čemu je razlika između poruka & i and: ?
+55. Kako se iskazuju uslovi u programskom jeziku Pharo?
+56. Objasniti pojam toka (engl. stream). Sa čime sve tokovi mogu da manipulišu?
+57. Šta je podrazumevana povratna vrednost metode?
+58. Šta znači da su metode virtualne (engl. virtual)?
+59. Šta znači da se metode kasno vezuju (engl. late binding)?
+60. Zašto se u kontekstu programskog jezika Pharo koristi pojam slanje poruke (engl. message
+passing), a ne pojam poziv metode?
+61. Kako se u programskom jeziku Pharo kreira klasa?
+62. Kako se u programskom jeziku Pharo implementira konstruktor klase?
+63. Kako se u programskom jeziku Pharo kreiraju objekti? Navesti primere.
+64. Kakvo nasleđivanje je podržano u programskom jeziku Pharo?
+65. Koja je korenska klasa u hijerarhiji nasleđivanja u programskom jeziku Pharo?
+66. Kako se i kada nasleđuju stanje, odnosno ponašanje objekata u programskom jeziku Pharo?
+67. Iz koja dva koraka se sastoji slanje poruke?
+68. Na šta pokazuje self, a na šta super?
+69. U čemu je razlika između self i super?
+70. Kako se i kada određuju self, odnosno super?
+71. Koja je uloga pojma pretraga metoda (engl. method look-up)?
+72. Iz kojih koraka se sastoji pretraga metoda (engl. method look-up)?
+73. Šta se desi kada pretraga metoda (engl. method look-up) ne uspe?
+74. Kako se u programskom jeziku Pharo navodi par (ključ:vrednost)?
