@@ -44,72 +44,227 @@
 Pitanja koja se odnose na Pharo okruženje:
 
 13. Da li je Pharo statički ili dinamički tipiziran programski jezik? Objasniti.
+	Dinamicki. Tipovi se znaju u runtime-u, ne znaju se staticki.
+
 14. Da li u programskom jeziku Pharo postoje tipovi?
+	Postoje.
+
 15. Da li su klase objekti?
+	Jesu.
+
 16. Da li su poruke objekti?
+	Jesu.
+
 17. U čemu je razlika između poruke i metode? Šta se iskazuje porukom, a šta metodom?
+	Poruke predstavljaju nameru (šta treba uraditi). Metode opisuju kako treba nešto uraditi.
+	Na poruku objekat odgovara, tako sto ce pozvati metodu.
+
 18. Kako su modifikatori pristupa realizovani u programskom jeziku Pharo?
-19. Kako se u programskom jeziku Pharo definiše statička metoda?
-20. Kako se u programskom jeziku Pharo definiše interfejs?
-21. Kako se u programskom jeziku Pharo definišu parametrizovani tipovi, odnosno generici (engl.
-generics)?
+	Sve metode su javne i virtuelne, svi atributi su zasticeni(Privatni za objekat, Dostupni podklasama)
+	
+19. Kako se u programskom jeziku Pharo definise staticka metoda?
+20. Kako se u programskom jeziku Pharo definise interfejs?
+21. Kako se u programskom jeziku Pharo definisu parametrizovani tipovi, odnosno generici?
+	Pharo nema staticke metode, interfejse niti generics.
+
 22. Kojoj klasi pripada nil u programskom jeziku Pharo? Koliko instanci ovog objekta postoji?
+	Pripada undefined object i postoji jedna instanca. 
+
 23. Kakve sve poruke mogu biti? Navesti primere za svaku kategoriju poruka.
+	Mogu biti unarne, binarne i keyword poruke. 
+	Unarna poruka: 6 factorial,
+	binarna: 5 + 3,
+	keyword: 2 raisedTo: 4
+
 24. Kako su u programskom jeziku Pharo definisani prioriteti poruka?
+	unutar zagrada > unarne > binarne > keyword
+
 25. Kako su u programskom jeziku Pharo definisani prioriteti matematičkih operatora?
+	Upotrebom zagrada definisemo prioritet operacija.
+
 26. Šta je objekat prijemnik (engl. receiver), a šta selektor poruke (engl. selector)?
+	Na primeru 4 + 5, objekat 4 je prijemnik, selektor je +, a argument je 5.
+
 27. Koje tri komponente može da sadrži poruka?
+	Objekat prijenik, selektor i argument.
+
 28. Šta predstavlja znak ; u programskom jeziku Pharo ?
+	Predstavlja kaskadu. Poruka u novom redu
+	se salje istom objektu prijemniku.
+
 29. Šta predstavlja znak . u programskom jeziku Pharo?
+	Predstavlja separator.
+
 30. Koja je razlika između ; i . u programskom jeziku Pharo?
+	. izvrsava sledecu naredbu a ; je kaskada vise naredbi.
+
 31. Šta je kaskada? Šta je rezultat kaskade? Šta je rezultat višestruke upotrebe ; ?
+	Kaskada je ulancavanje vise naredbi koji ce se primenjivati na objekat prijemnik.
+
 32. Da li je izraz 1 * 2; + 100; * 123. sintaksno validan? Ukoliko jeste, odrediti njegov
 rezultat, u suprotnom objasniti grešku koja se javlja prilikom parsiranja.
+	Vraca 123.
+
 33. Šta su simboli u programskom jeziku Pharo? Navesti nekoliko primera.
+	Sve sto krece sa #, nasledjuje string. Npr. nizovi, karakteri itd.
+
 34. Koji sve literali postoje u programskom jeziku Pharo? Navesti primere.
+	TODO SmallIntiger, True, False, ByteString. Primitivni tipovi.	
+
 35. Šta su blokovi? Da li su blokovi objekti?
+	Blokovi su leksicka zatvorenja. Jesu.
+
 36. Šta je vrednost definicije, a šta evaluacije bloka?
+	Definicija bloka ne izvrsava kod, ona “zamrzava” izračunavanje definisano telom bloka.
+	Evaluacija bloka vraća vrednost poslednjeg izraza u bloku.
+
 37. Da li blokovi mogu da primaju argumente? Ukoliko mogu, kako im se argumenti prosleđuju?
 Navesti primere.
+	Mogu. Prosledjuju im se pomocu value:
+	Primer: 
+	[ :x :y | x + y ] value: 5 value: 7
+	> 12
+
 38. Da li se blok može smestiti u privremenu promenljivu? Da li se blok može proslediti kao
 argument poruke? Da li blok može biti povratna vrednost metode?
+	Da, da, da
+
 39. Koliko puta se jedan blok može evaluirati?
+	Moze se evaluirati vise puta.
+
 40. Šta će se desiti ukoliko se prilikom evaluacije bloka naiđe na znak ^ ?
+		Prekinuce se izvrsavanje tog bloka i vratiti trenutnu vrednost.
+
 41. Šta je yourself? Kada se yourself najčešće upotrebljava? Navesti primer.
+	Yourself je poruka koja vraca objekat prijemink. Najcesce se koristi kod kaskadiranja
+	Primer: 
+	Set new add: 2 kao rezultat vratca 2 a ne skup jer metoda add vraca argument a ne objekat.
+	
+	Set new add: 2;
+	yourself
+	Rezultat ovoga je sam skup sa jednom vrednoscu a to je 2.
+
 42. Kakve sve promenljive mogu biti u programskom jeziku Pharo? Navesti primere.
+	Globalne i lokalne.
+	Primer: lokalne |c|  - privremene varijable, instance varijabli, argumenti... 
+			globalne |Transcript| - klase, varijable klasa 
+
 43. Šta su globalne, a šta lokalne promenljive u programskom jeziku Pharo? Navesti primere.
+	Globalne promenjive pocinju sa velikim slovom i njima se moze globalno pristupiti.
+	Lokalne promenjive pocinju malim slovom.
+	Primer: lokalne |c|  - privremene varijable, instance varijabli, argumenti... 
+			globalne |Transcript| - klase, varijable klasa 
+
 44. Kako su petlje implementirane u programskom jeziku Pharo?
+	Kao poruke. Poruke se salju brojevima, kolekcijama ili blokovima.
+
 45. Šta su kolekcije u programskom jeziku Pharo? Navesti nekoliko primera najčešće korišćenih
 kolekcija.
+	U pharo-u kolekcije su skupovi bilo kojih objekata.
+	Najcesce koriscenje su:
+		OrderedCollection (dynamically growing)
+		Array (fixed size, direct access)
+		Set (no duplicates)
+		Dictionary (key-based, aka. maps)	
+
 46. Koja je razlika između niza (Array) i uređene kolekcije (OrderedCollection)?
+	Razlika je sto niz ima fiksan broj clanova, a urednjena kolekcija dinamicki raste.
+
 47. Šta su literalni nizovi? Koje sve elemente mogu da sadrže?
+	To su instance klase Array, pocinju sa znakom #.
+	Sadrze objekte koji imaju tekstualnu reprezentaciju: brojevi, stringovi, nil, simboli.
+
 48. Kada se kreiraju literalni nizovi?
+	U vremenu kompajliranja.
+
 49. Šta su iteratori? Kako su implementirani u programskom jeziku Pharo?
+	To su poruke koje sluze da se kolekcija iterira kroz sebe. Implementirani su kao poruke.
+
 50. Na koji način iteratori doprinose enkapsulaciji kolekcije?
+	Tako sto govore kolekciji da se iterira sama kroz sebe.
+
 51. Objasniti šta znači da se iteratori ponašaju polimorfno u programskom jeziku Pharo?
+	Znaci da rade na svim kolekcijama.
+
 52. Koje su Pharo poruke ekvivalenti funkcijama map, filter i reduce programskog jezika
 Python?
+	Collect, select, inject into.
+
 53. Šta je true, a šta false u programskom jeziku Pharo? Kojim klasama pripadaju? Koliko
 instanci ovih objekata postoji?
+	true je jedinstvena instanca klase True, a false je jedinstvena instanca klase False.
+	Pripadaju klasama True i False. Jedna za True i jedna za False.
+
 54. U čemu je razlika između poruka & i and: ?
+	& koristi eager evaluaciju, a and: koristi lazy evaluaciju.
+	& evaluira uvek obe strane, a and: jednu stranu i po potrebi drugu.
+
 55. Kako se iskazuju uslovi u programskom jeziku Pharo?
+	U Pharo uslovi su poruke koje se šalju Bulovim vrednostima i blokovima.
+
 56. Objasniti pojam toka (engl. stream). Sa čime sve tokovi mogu da manipulišu?
+	Oni sluze za manipulaciju podacima. Sa Kolekcijama, fajlovima...
+
 57. Šta je podrazumevana povratna vrednost metode?
+	self
+
 58. Šta znači da su metode virtualne (engl. virtual)?
+	Znaci da se u runtime-u nalazi koja se implementacija poziva.
+
 59. Šta znači da se metode kasno vezuju (engl. late binding)?
+	Znaci da se sve metode evaluiraju u runtime-u.
+
 60. Zašto se u kontekstu programskog jezika Pharo koristi pojam slanje poruke (engl. message
 passing), a ne pojam poziv metode?
+
+
 61. Kako se u programskom jeziku Pharo kreira klasa?
+	Ne postoji odgovarajuca sintaksa, koristi se system browser.
+
 62. Kako se u programskom jeziku Pharo implementira konstruktor klase?
+	Nema konstruktore ali imaju poruke koje inicijalizuju objekat.
+
 63. Kako se u programskom jeziku Pharo kreiraju objekti? Navesti primere.
+	Slanjem poruke drugom objektu ili klasi. String new: 32, Array new
+
 64. Kakvo nasleđivanje je podržano u programskom jeziku Pharo?
+	jednostruko nasledjivanje
+
 65. Koja je korenska klasa u hijerarhiji nasleđivanja u programskom jeziku Pharo?
+	Klasa Object
+
 66. Kako se i kada nasleđuju stanje, odnosno ponašanje objekata u programskom jeziku Pharo?
+    Statičko za stanje (u vreme definisanja klase).
+    Dinamičko za ponašanje (u vreme izvršavanja).
+
+
 67. Iz koja dva koraka se sastoji slanje poruke?
+    1. Pretraga odgovarajuće metode.
+    2. Izvršavanje metode na objektu prijemniku.
+
+
 68. Na šta pokazuje self, a na šta super?
+	Self uvek predstavlja objekat prijemnik, a super predstavlja objekat prijemnik ali 
+	pretraga poruka započinje u nadklasi klase u kojoj se super nalazi.
+
 69. U čemu je razlika između self i super?
+	self se odredjuje staticki, a super dinamicki.
+
 70. Kako se i kada određuju self, odnosno super?
+	Self uvek predstavlja objekat prijemnik, a super predstavlja objekat prijemnik ali 
+	pretraga poruka započinje u nadklasi klase u kojoj se super nalazi.
+	Self se odredjuje staticki, a super dinamicki.
+
 71. Koja je uloga pojma pretraga metoda (engl. method look-up)?
+	Da se za poslatu poruku pronadje odgovarajuca metoda.
+
 72. Iz kojih koraka se sastoji pretraga metoda (engl. method look-up)?
+	Metoda se traži:
+		Počevši od klase objekta prijemnika
+		Zatim u svim nadklasama uz lanac nasleđivanja.
+
 73. Šta se desi kada pretraga metoda (engl. method look-up) ne uspe?
+	Prijemniku se salje poruka doesNotUnderstand.
+
 74. Kako se u programskom jeziku Pharo navodi par (ključ:vrednost)?
+	{ Kljuc -> vrednost } ili at: index put: value
