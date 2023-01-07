@@ -1,0 +1,374 @@
+1. Da li je programski jezik Go kompajliran ili interpretiran programski jezik? Objasniti.
+	Go je kompajliran jezik. Generise masinski kod koji se izvrsava.
+
+2. Da li je programski jezik Go statički ili dinamički tipiziran programski jezik? Objasniti.
+	Go je staticki tipiziran. Tipovi se moraju znati za vreme kompajliranja.
+
+3. Objasniti pojmove radni prostor (engl. workspace), repozitorijum, modul, paket i izvorna
+datoteka u kontekstu programskog jezika Go.
+	Workspace je direktorijum za go kod, sadrzi src i bin.
+	Repozitorijum projekta sadrzi jedan ili vise modula.
+	Modul je kolekcija vise paketa, koji se zajedno objavljuju.
+	Go kod je organizovan u pakete, koji su kolekcija izvornih? fajlova koji se zajedno kompaliraju.
+
+4. Koja dva tipa izvornih datoteka postoje? Koje su bitne razlike između njih?
+	TODO
+
+5. Kako se gradi import prefiks za pakete koji pripadaju standardnoj biblioteci, a kako za pakete
+koji joj ne pripadaju?
+	Za standardne biblioteke se samo navede ime biblioteke, a za strane biblioteke mora cela putanja.
+
+6. Kako su regulisana prava pristupa funkcijama izvan paketa kojima pripadaju?
+	Funkcije se pisu velikim slovom eksportovane iz pakete i zatim importovane u drugi paket.
+
+7. Objasniti postupak pisanja i pokretanja jediničnih testova?
+	Testovi se pisu, tako sto se kreira fajl cije ime se zavrsava sa _test.go i u tom fajlu se pisu
+	funkcije koje zelimo da se izvrse. Test se pokrece sa go test.
+
+8. Kako je realizovano upravljanje memorijom (engl. memory management).
+	Uz pomoc garbage kolektora.
+
+9. Da li programski jezik Go nativno podržava konkurentno programiranje? Objasniti.
+	Da, uz pomoc go rutina.
+
+10. Šta mora biti prvi iskaz u izvornoj datoteci?
+	Ime paketa.
+
+11. Gde se smeštaju izvršne komande nakon instalacije?
+	Ako imamo bin folder onda ce tu biti exe, ako nemamo onda tamo gde smo build-ovali.
+
+12. Šta je ulazna tačka u Go program?
+	Main funkcija u main paketu.
+
+13. Šta je naziv, a šta (import) putanja paketa koji ne pripada standardnoj biblioteci? Da li naziv
+paketa mora biti jedinstven? A putanja paketa?
+	Naziv je zadnji deo url-a. Putanja mora biti jedinstvena. Naziv ne mora, ali onda mora imati
+	drugaciji alias.
+
+14. Koliko povratnih vrednosti može da vrati funkcija?
+	Nula ili vise.
+
+15. Šta su to imenovane povratne vrednosti? Koja je njihova najbitnija uloga? Kada ih je zgodno
+koristiti, a kada se ne preporučuje njihova upotreba?
+	U potpisu metode vidimo sta se vraca. Koristimo ih da bi mogli uraditi return bez argumenata.
+	Zgodno ih je koristiti kada je funkcija dugacka, a ne preporucuje se TODO
+
+16. Šta je return iskaz bez argumenata (engl. naked return)? Kada se najčešće koristi?
+	Mozemo da ga koristimo kada su u potpisu funkcije napisana imena varijabla koje vraca,
+	omogucava nam da pozovemo return bez argumenata. Najcesce se koristi kada je funkcija
+	dugacka.
+
+17. Na koja dva načina je moguće deklarisati novu promenljivu? Po čemu se razlikuju?
+	Mogu se deklarisati sa ili bez inicijalizatora. Ukoliko se koristi inicijalizator, moze
+	da se izostavi tip, jer ce se odrediti na osnovu vrednosti.
+
+18. Koja je uloga operatora := u programskom jeziku Go? Da li se može koristiti van funkcije?
+Obrazložiti odgovor.
+	:= je kraci oblik deklaracije varijable. Ne moze se koristiti van funkcije, jer u goLangu
+	svaki izraz mora poceti kljucnom recju.  
+	Primer: b:= 3
+
+19. Šta su to nulte vrednosti (engl. zero values)?
+	To su vrednosti koje se inicijalizuju na varijable bez inicijalizatora.
+	0 za numericke tipove, false za boolean tip, "" (prazan string) za string tip.
+	nil za ostalo
+
+20. Da li je iskaz var a int32 = uint32(55) validan? Obrazložiti odgovor.
+	Nije validno zato sto se deklarisan tip ne poklapa sa dodeljenom vrednoscu.
+
+21. Šta je inferencija tipova (engl. type inference)?
+	Kada je na desnoj strani dodele netipizirana numericka konstanta, tip zavisi
+	od preciznosti konstante.
+	Primer: 
+	i := 42           // int
+	f := 3.142        // float64
+	g := 0.867 + 0.5i // complex128
+
+22. Na osnovu sledećeg isečka koda potrebno je odrediti tip za promenljive i, j, k, f i g
+	i - int
+	j - int
+	k - int
+	f - float64
+	g - complex64
+
+23. Kako se definišu konstante? Da li je moguća upotreba operatora := prilikom definicije
+konstanti? Kog sve tipa mogu biti konstatne? Kog su tipa konstante deklarisane bez ekplicitnog
+navođenja2 tipa?
+	Definisu se sa kljucnom recju const. Nije. Osnovnih tipova. 
+	Kod netipiziranih konstanti tip se određuje na osnovu konteksta 
+
+24. Šta će biti prikazano na standardnom izlazu nakon izvršavanja sledećeg isečka koda? Zašto?
+	cannot use Huge (untyped float constant 1e+1000) as float64 value in argument to fmt.Println (overflows)
+	Zato sto je vrednost prevelika. TODO
+
+25. Šta je factored import? Navesti nekoliko primera njegove upotrebe.
+	Funkcionalnost koja nam omogucava da importujemo vise paketa od jednom, tako sto ih pisemo
+	u zagradama.
+
+26. Dolenavedeni isečak koda ima jednu grešku. Potrebno je pronaći i ispraviti.
+	treba da pise math.Pi umesto math.pi.
+
+27. Kolika je širina sledećih tipova podataka int, uint i uintptr?
+	Na 32-bitnim sistemima 23, na 64-bitnim 64.
+
+28. Dolenavedeni isečak koda ima nekoliko grešaka. Potrebno ih je pronaći i ispraviti.
+	strings import nije koriscen, varijabla a nije koriscena, f ne moze biti koriscen kao uint
+
+29. Kako se u programskom jeziku Go navodi while petlja?
+	Kada napisemo for petlju i navedemo samo uslov.
+
+30. Potrebno je pronaći i ispraviti sve greške u navedenom isečku koda. Nakon toga odrediti doseg
+(engl. scope) važenja promenljive v.
+	else treba da je napisan u redu iznad i fale mu { },  := ne moze da se pise van funkcije (ili se stavi u main
+	ili se doda var ispred). Opseg vazenja v je u if i else blokovima.
+
+31. Šta će biti prikazano na standardnom izlazu nakon izvršavanja sledećeg isečka koda? Zašto?
+	Returning 1
+	1 :)
+	Zato sto se prvo izvrsi giveMeOne(), pa onda case.
+
+
+32. Upotrebom switch-case konstrukcije napisati programski kod ekvivalentan datom kodu.
+	package main
+
+	import (
+		"fmt"
+		"time"
+	)
+
+	func main() {
+		t := time.Now()
+		switch {
+		case t.Hour() < 12:
+			fmt.Println("Good morning!")
+		case t.Hour() < 17:
+			fmt.Println("Good afternoon.")
+		default:
+			fmt.Println("Good evening.")
+		}
+	}
+
+33. Koja je uloga defer iskaza u programskom jeziku Go? Kada se određuju argumenti funkcije
+ispred čijeg poziva je navedena ključna reč defer? U kom redosledu se izvršavaju višestruki
+defer iskazi navedeni unutar iste funkcije?
+	Odlaže izvršavanje funkcije dok se ne vratimo iz funkcije u kojoj se nalazimo. Parametri funkcije
+	se evaluiraju na mestu poziva defer. Izvrsavaju se po LIFO redosledu.
+
+34. Šta je pokazivač u programskom jeziku Go?
+	Pokazivac je memorijska adresa vrednosti varijable.
+
+35. Kako je realizovana pokazivačka aritmetika u programskom jeziku Go?
+	Nema
+
+36. Šta je derefereciranje pokazivača? Navesti primer.
+	Uzimanje vrednosti iz memorijske adrese. *p = 21
+
+37. Da li je eksplicitno dereferencinje pokazivača uvek obavezno? Objasniti kroz nekoliko primera.
+	Nije. 
+	Primer:
+	
+	type Vertex struct {
+	   X int
+	   Y int
+	}
+
+	func main() {
+	   v := Vertex{1, 2}
+	   p := &v
+	   p.X = 3
+	}
+
+38. U čemu je razlika između operatora & i * ?
+	& pokazuje na memorijsku lokaciju, a * nam vraca vrednost.
+
+39. U čemu je razlika između niza (engl. array) i isečka (engl. slice) u programskom jeziku Go?
+	Slice uzima delove niza. Slice ima dinamcki velicinu, a array fiksnu.
+
+40. Šta je dužina, a šta kapacitet isečka?
+	Duzina je broj elemenata isecka, a kapacitet je broj el. poceci od prvog el. iscecka do poslednjeg
+	el. potpornog niza.
+
+41. Šta predstavlja potporni niz nekog isečka?
+	Niz odkog je napravljen isecak.
+
+42. Objasniti princip rada funkcije append?
+    Prvi parametar je isečak, ostali parametri su vrednosti koje se dodaju.
+    Povratna vrednost je novi isečak koji sadrži nove elemente.
+    Ako potporni niz nema dovoljan kapacitet alocira se novi.
+
+
+43. Za šta se koristi funkcija make?
+	Inicijalizuje niz odrednjene velicine sa nultim vrednostima i vraca njegov isecak,
+	moze se postaviti i kapacitet.
+
+44. Šta je nulta vrednost za isečak?
+	Zavisi od tipa elemenata, kao iz 19. pitanja.
+
+45. Odrediti dužinu, kapacitet i potporni niz isečaka s1, s2, s3, s4 i s5 za vreme izvršavanja
+funkcije showSlices.
+
+
+46. Čemu služi znak _ u programskom jeziku Go? Navesti nekoliko primera upotrebe.
+	Zanemaruje se promenjiva.
+	Go nam vraca gresku ako promenjiva nije upotrebljena. _ nam sluzi da izbegnemo to.
+	Primeri upotrebe: u for petlji kad nam ne treba indeks, kad nam ne treba neka vrednost
+	koju vraca funkcija...
+
+47. Šta je nulta vrednost za mapu?
+	Nula vrednost je nil.
+
+48. Šta će biti prikazano na standardnom izlazu nakon izvršavanja sledećeg isečka koda? Zašto?
+	2, 0, 0
+	2 je zadato, a nule su nulte vrednosti float-a
+
+49. Da li su funkcije first-class objekti u programskom jeziku Go? Objasniti.
+	Jesu. Mogu se dodeljivati varijablama, prosledjivati kao parametri, dobijati kao povratne
+	vrednosti.
+
+50. Da li su funkcije first-class objektii u programskom jeziku C? Objasniti.
+	Ne. Otkud znam. 
+
+51. Da li programski jezik Go podržava leksička zatvorenja? Ukoliko podržava, potrebno je navesti
+nekoliko primera. Ukoliko pak ne podržava, potrebno je dati objašnjenje zbog čega.
+
+
+52. Kako su klase realizovane u programskom jeziku Go?
+	Nema klasa, koriste se strukture.
+	Mogu definisati metode nad tipovima
+
+53. Šta su metode u programskom jeziku Go? Navesti nekoliko primera.
+	Funkcije koje imaju poseban parametar koji je reciver.
+	Primeri: TODO
+
+54. Nad kojim tipovima je moguće definisati metode?
+	Nad svim tipovima koji su u scope-u.
+
+55. Koja su dva najbitnija razloga za upotrebu pokazivačkih prijemnika (engl. pointer receivers) u
+odnosu na vrednosne prijemnike (engl. value receivers)?
+	Kada metoda treba da podifikuje prijemnik. Izbegavanje kopiranja prijemnika.
+
+56. Šta će biti prikazano na standardnom izlazu nakon izvršavanja sledećeg isečka koda? Zašto?
+	cannot use ptr (variable of type *MyInt) as type MyInt in argument to ShowMe
+	Zato sto nismo dereferecirali ptr
+
+57. Šta je interfejs u programskom jeziku Go? Navesti nekoliko primera.
+	Skup potpisa metoda. Tip implementira interfejs ako implementira sve metode.
+	Primeri: TODO
+
+58. Da li se interfejs implementira implicitno ili eksplicitno? Objasniti.
+	Implementira se implicitno. Implementiran je jedino ako su implementirane sve njegove metode.
+
+59. Da li će sledeći isečak koda izazvati grešku, zašto?
+	Nece, zato sto radi kako treba?
+
+60. Šta je interfejs vrednosti (engl. interface values)?
+	Uredjeni par vrednosti i konkrentog tipa: (value, type)
+	Interfejs vrednost čuva konkretnu vrednost tipa koji implementira dati interfejs
+	Poziv metode interfejsa izvršava poziv metode tipa vrednosti nad sadržanom vrednošću
+
+61. Šta je nil interfejs vrednost?
+
+
+62. Da li prijemnik metode može imati nil vrednost? Da li nil interfejs vrednost može biti
+prijemnik metode? Oba odgovora obrazložiti i potkrepiti odgovarajućim primerima.
+
+
+63. Šta je prazan interfejs (engl. empty interface) i za šta se najčešće koristi?
+
+
+64. Pronaći i ispraviti grešku u dolenavedenom isečku koda.
+
+
+65. Šta je Stringer interface i čemu služi? Navesti nekoliko primera njegove upotrebe.
+
+
+66. Kako su realizovani izuzeci u programskom jeziku Go?
+
+
+67. Na koji način funkcija može prijaviti da se tokom njenog izvršavanja desila greška? Navesti
+nekoliko primera.
+
+
+68. Šta je tok (engl. stream) podataka?
+
+
+69. Na koji način je moguće iščitati sadržaj tekstualne datoteke? Koji interfejs se tom prilikom
+koristi?
+
+
+70. Na koje načine se prosleđuju argumenti prilikom poziva funkcije u programskom jeziku Go?
+
+
+71. Šta je Go rutina (engl. goroutine)?
+
+
+72. Na koje sve načine je moguće izvršiti sinhronizaciju Go rutina?
+
+
+73. Šta su i čemu služe kanali u programskom jeziku Go?
+
+
+74. Šta su baferovani kanali i kako se kreiraju?
+
+
+75. Da li je obavezno zatvaranje kanala? A tokova?
+
+
+76. Kada se najčešće zatvaraju kanali?
+
+
+77. Na koje načine se može obezbediti ekskluzivan pristup nekom resursu?
+
+
+
+Praktični zadaci
+
+78. Navesti primer beskonacne petlje u programskom jeziku Go.
+79. Implementirati funkciju Sqrt čiji je zadatak da primenom Njutn-Rapsonove4 metode izračuna
+vrednost kvadratnog korena realnog broja, koji prethodno pomenuta funkcija prima kao jedini
+parametar. Testirati implementaciju Sqrt funkcije i proveriti kolika su odstupanja5 njenih
+rezultata od rezultata funkcije math.Sqrt6. Dodatne smernice za implementaciju i testiranje
+možete pronaći na sledećem linku.
+80. Implementirati funkciju WordCount, koja kao parametar prima jedan string. Njen zadatak je da
+u prethodno pomenutom stringu izdvoji sve reči i prebroji koliko puta se svaka od njih
+pojavljuje. Povratna vrednost funkcije WordCount treba da bude mapa čiji parovi imaju sledeći
+oblik “reč : broj_pojavljivanja_reči”. Ovako implementiranu funkciju testirati na
+nekoliko primera. Dodatne smernice za implementaciju i testiranje možete pronaći na sledećem
+linku.
+81. Implementirati funkciju fibonacci čija je povratna vrednost druga (unutrašnja) funkcija.
+Zadatak ove unutrašnje funkcije je da pri svakom pozivu7 vrati odgovarajući element niza
+Fibonačijevih brojeva8, počevši od 09. Dodatne smernice za implementaciju možete pronaći na
+sledećem linku.
+82. Kreirati tip IPAddr tako da predstavlja IPv410 adresu. Prilikom poziva funkcije fmt.Print sa
+argumentom IPAddr{192, 168, 0, 1}, na standardnom izlazu bi trebalo da se prikaže
+sledeći ispis 192.168.0.1 . Dodatne smernice za implementaciju možete pronaći na sledećem
+linku.
+83. Funkciju Sqrt iz zadatka 79.. potrebno je proširiti tako da prijavi grešku ukoliko joj se kao
+argument prilikom poziva prosledi negativan broj. Greška treba da sadrži neodgovarajuću
+vrednost argumenta koji ju je izazvao. Dodatne smernice za implementaciju možete pronaći na
+sledećem linku.
+84. Implementirati novi tip podatka koji zadovljava Reader interfejs i čiji je zadatak da emituje
+beskonačan tok ASCII karaktera ’A’. Dodatne smernice za implementaciju možete pronaći na
+sledećem linku.
+85. Kreirati tip podatka rot13Reader koji zadvoljava Reader interfejs. Zadatak tipa rot13Reader
+je da čita podatke iz nekog toka i modifikuje ih primenom11 Cezarove šifre zamena12. Dodatne
+smernice za implementaciju možete pronaći na sledećem linku.
+4 https://en.wikipedia.org/wiki/Newton%27s_method
+5 Možete isprobati odstupanja za prvih 1000000 prirodnih brojeva.
+6 https://golang.org/pkg/math/#Sqrt
+7 Pri prvom pozivu vraća broj 0, pri drugom pozivu broj 1, itd.
+8 https://en.wikipedia.org/wiki/Fibonacci_number
+9 U pojedinoj literaturi se kao prvi Fibonačijev broj navodi broj 1.
+10 https://en.wikipedia.org/wiki/IPv4
+11 Cezarovu šifru zamene treba primeniti samo na mala i velika slova engleskom alfabeta.
+12 https://en.wikipedia.org/wiki/ROT13
+86. Upotrebom Go rutina, implementirati Same funkciji čiji je zadatak da proveri da li su dva
+sortirana binarna stabla13 ekvivalentna. Dodatne smernice za implementaciju možete pronaći na
+sledećem linku.
+87. Upotrebom Go rutina, implementirati jednostavan veb-crawler koji polazeći od zadate veb-
+stranice rekurzivno obilazi sve susedne stranice14, vodeći računa da svaku stranicu obiđe tačno
+jednom. Dodatne smernice za implementaciju možete pronaći na sledećem linku.
+88. Generisati dinamički niz sa bar 10000 slučajno odabranih brojeva iz intervala [0, 255].
+Implementirati funkcije zbir i zbirParalelno koje treba da odrede zbir brojeva prethodno
+pomenutog niza sekvencijalno, odnosno paralelno15 upotrebom Go rutina. Odraditi
+eksperimente jakog i slabog skaliranja funkcije zbirParalelno.
