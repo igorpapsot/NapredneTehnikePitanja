@@ -12,7 +12,7 @@ datoteka u kontekstu programskog jezika Go.
 	Go kod je organizovan u pakete, koji su kolekcija izvornih? fajlova koji se zajedno kompaliraju.
 
 4. Koja dva tipa izvornih datoteka postoje? Koje su bitne razlike između njih?
-	TODO
+	Source datoteke koje se kompajliraju i package datoteke koje se ne kompajliraju.
 
 5. Kako se gradi import prefiks za pakete koji pripadaju standardnoj biblioteci, a kako za pakete
 koji joj ne pripadaju?
@@ -51,7 +51,8 @@ paketa mora biti jedinstven? A putanja paketa?
 15. Šta su to imenovane povratne vrednosti? Koja je njihova najbitnija uloga? Kada ih je zgodno
 koristiti, a kada se ne preporučuje njihova upotreba?
 	U potpisu metode vidimo sta se vraca. Koristimo ih da bi mogli uraditi return bez argumenata.
-	Zgodno ih je koristiti kada je funkcija dugacka, a ne preporucuje se TODO
+	Zgodno ih je koristiti kada je funkcija dugacka, a ne preporucuje se kada je funkcija jednostvna
+	tj kad ne poboljsavaju citljivost.
 
 16. Šta je return iskaz bez argumenata (engl. naked return)? Kada se najčešće koristi?
 	Mozemo da ga koristimo kada su u potpisu funkcije napisana imena varijabla koje vraca,
@@ -206,7 +207,7 @@ defer iskazi navedeni unutar iste funkcije?
 
 45. Odrediti dužinu, kapacitet i potporni niz isečaka s1, s2, s3, s4 i s5 za vreme izvršavanja
 funkcije showSlices.
-
+	TODO
 
 46. Čemu služi znak _ u programskom jeziku Go? Navesti nekoliko primera upotrebe.
 	Zanemaruje se promenjiva.
@@ -267,108 +268,73 @@ odnosu na vrednosne prijemnike (engl. value receivers)?
 	Poziv metode interfejsa izvršava poziv metode tipa vrednosti nad sadržanom vrednošću
 
 61. Šta je nil interfejs vrednost?
-
+	Kada je vrednost nil, vrednost je nil ako struktura nije inicijalizovana.
 
 62. Da li prijemnik metode može imati nil vrednost? Da li nil interfejs vrednost može biti
 prijemnik metode? Oba odgovora obrazložiti i potkrepiti odgovarajućim primerima.
-
+	Da, iako interfejs sadrzi nil vrednost, nije nil interfejs. Ne, to je runtime greska, jer
+	ne znamo tip koji bi odredio metodu koju treba pozvati.
 
 63. Šta je prazan interfejs (engl. empty interface) i za šta se najčešće koristi?
-
+	To je interfejs bez ijedne metode, moze sadrzati vrednost bilo kog tipa. Koristi se za
+	cuvanje vrednosti nepoznatog tipa.
+	Primer:
+	fmt.Print prihvata proizvoljan broj argumenata tipa interface{}
 
 64. Pronaći i ispraviti grešku u dolenavedenom isečku koda.
-
+	13 linija:
+	f, ok = i.(float64)
+	valjda je dobro? TODO 
 
 65. Šta je Stringer interface i čemu služi? Navesti nekoliko primera njegove upotrebe.
-
+	Implementira ga bilo koji tip koji ima String() metodu, sluzi da pretvara vrednosti u
+	string. 
+	Primeri upotrebe:
+	Kad se koristi fmt.Printf() ili kad se salje bilo kojoj metodi koja prihvata string.
 
 66. Kako su realizovani izuzeci u programskom jeziku Go?
-
+	Nema, ali postoji error interfejs koji se koristi za rad sa greskama. 
 
 67. Na koji način funkcija može prijaviti da se tokom njenog izvršavanja desila greška? Navesti
 nekoliko primera.
-
+	Ako funkcija vraca gresku, proveravamo da li je nil ili nije. Ako nije, dalje radimo sa tom 
+	greskom.
+	Primer:
+	i, err := strconv.Atoi("42")
+	if err != nil {
+		fmt.Printf(err)
+		return
+	}
 
 68. Šta je tok (engl. stream) podataka?
-
+	Niz elemenata ciji delovi postaju dostupni tokom vremena.
 
 69. Na koji način je moguće iščitati sadržaj tekstualne datoteke? Koji interfejs se tom prilikom
 koristi?
-
+	Koristi se Read metoda iz io.Reader, koja puni zadati byte isecak sa podacima i vraca broj bajtova
+	koji su upisani i gresku ako je ima.
 
 70. Na koje načine se prosleđuju argumenti prilikom poziva funkcije u programskom jeziku Go?
-
+	Prosledjivanje po vrednosti i referenci. Po referenci je pokazivacem. 
 
 71. Šta je Go rutina (engl. goroutine)?
-
+	Sluzi za kreiranje nove niti, kojom upravlja runtime.
 
 72. Na koje sve načine je moguće izvršiti sinhronizaciju Go rutina?
-
+	Pomocu kanala i sync.Mutex
 
 73. Šta su i čemu služe kanali u programskom jeziku Go?
-
+	Tipizirane veze koje sluze za slanje vrednosti, kreiraju se dinamicki upotrebom make funkcije.
 
 74. Šta su baferovani kanali i kako se kreiraju?
-
+	Kanali u kome se pisanje blokira samo ako je kanal pun, citanje se blokira ako je kanal prazan.
+	Njihovo kreiranje je omoguceno drugim parametrom make funkcije.
 
 75. Da li je obavezno zatvaranje kanala? A tokova?
-
+	Nije, potrebno je samo ako treba da se signalizira da nema vise podataka. 
 
 76. Kada se najčešće zatvaraju kanali?
-
+	Ako treba da se signalizira da nema vise podataka. 
 
 77. Na koje načine se može obezbediti ekskluzivan pristup nekom resursu?
-
-
-
-Praktični zadaci
-
-78. Navesti primer beskonacne petlje u programskom jeziku Go.
-79. Implementirati funkciju Sqrt čiji je zadatak da primenom Njutn-Rapsonove4 metode izračuna
-vrednost kvadratnog korena realnog broja, koji prethodno pomenuta funkcija prima kao jedini
-parametar. Testirati implementaciju Sqrt funkcije i proveriti kolika su odstupanja5 njenih
-rezultata od rezultata funkcije math.Sqrt6. Dodatne smernice za implementaciju i testiranje
-možete pronaći na sledećem linku.
-80. Implementirati funkciju WordCount, koja kao parametar prima jedan string. Njen zadatak je da
-u prethodno pomenutom stringu izdvoji sve reči i prebroji koliko puta se svaka od njih
-pojavljuje. Povratna vrednost funkcije WordCount treba da bude mapa čiji parovi imaju sledeći
-oblik “reč : broj_pojavljivanja_reči”. Ovako implementiranu funkciju testirati na
-nekoliko primera. Dodatne smernice za implementaciju i testiranje možete pronaći na sledećem
-linku.
-81. Implementirati funkciju fibonacci čija je povratna vrednost druga (unutrašnja) funkcija.
-Zadatak ove unutrašnje funkcije je da pri svakom pozivu7 vrati odgovarajući element niza
-Fibonačijevih brojeva8, počevši od 09. Dodatne smernice za implementaciju možete pronaći na
-sledećem linku.
-82. Kreirati tip IPAddr tako da predstavlja IPv410 adresu. Prilikom poziva funkcije fmt.Print sa
-argumentom IPAddr{192, 168, 0, 1}, na standardnom izlazu bi trebalo da se prikaže
-sledeći ispis 192.168.0.1 . Dodatne smernice za implementaciju možete pronaći na sledećem
-linku.
-83. Funkciju Sqrt iz zadatka 79.. potrebno je proširiti tako da prijavi grešku ukoliko joj se kao
-argument prilikom poziva prosledi negativan broj. Greška treba da sadrži neodgovarajuću
-vrednost argumenta koji ju je izazvao. Dodatne smernice za implementaciju možete pronaći na
-sledećem linku.
-84. Implementirati novi tip podatka koji zadovljava Reader interfejs i čiji je zadatak da emituje
-beskonačan tok ASCII karaktera ’A’. Dodatne smernice za implementaciju možete pronaći na
-sledećem linku.
-85. Kreirati tip podatka rot13Reader koji zadvoljava Reader interfejs. Zadatak tipa rot13Reader
-je da čita podatke iz nekog toka i modifikuje ih primenom11 Cezarove šifre zamena12. Dodatne
-smernice za implementaciju možete pronaći na sledećem linku.
-4 https://en.wikipedia.org/wiki/Newton%27s_method
-5 Možete isprobati odstupanja za prvih 1000000 prirodnih brojeva.
-6 https://golang.org/pkg/math/#Sqrt
-7 Pri prvom pozivu vraća broj 0, pri drugom pozivu broj 1, itd.
-8 https://en.wikipedia.org/wiki/Fibonacci_number
-9 U pojedinoj literaturi se kao prvi Fibonačijev broj navodi broj 1.
-10 https://en.wikipedia.org/wiki/IPv4
-11 Cezarovu šifru zamene treba primeniti samo na mala i velika slova engleskom alfabeta.
-12 https://en.wikipedia.org/wiki/ROT13
-86. Upotrebom Go rutina, implementirati Same funkciji čiji je zadatak da proveri da li su dva
-sortirana binarna stabla13 ekvivalentna. Dodatne smernice za implementaciju možete pronaći na
-sledećem linku.
-87. Upotrebom Go rutina, implementirati jednostavan veb-crawler koji polazeći od zadate veb-
-stranice rekurzivno obilazi sve susedne stranice14, vodeći računa da svaku stranicu obiđe tačno
-jednom. Dodatne smernice za implementaciju možete pronaći na sledećem linku.
-88. Generisati dinamički niz sa bar 10000 slučajno odabranih brojeva iz intervala [0, 255].
-Implementirati funkcije zbir i zbirParalelno koje treba da odrede zbir brojeva prethodno
-pomenutog niza sekvencijalno, odnosno paralelno15 upotrebom Go rutina. Odraditi
-eksperimente jakog i slabog skaliranja funkcije zbirParalelno.
+	Tako sto cemo zakljucati/otkljucati taj resurs koristeci mutex.
